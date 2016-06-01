@@ -16,8 +16,11 @@ namespace DIY_Music_Player
         public MediaPlayerWindow()
         {
             InitializeComponent();
+            //var videoPlayer = new VideoPlayer();
+            //videoPlayer.ShowDialog(this);
             var folderPicker = new FolderPicker();
             folderPicker.ShowDialog(this);
+            PlayerUtilities.CreateWindowReference(this);
         }
 
         private void PauseButton_Click(object sender, EventArgs e)
@@ -57,10 +60,15 @@ namespace DIY_Music_Player
         {
         }
 
-        private void UpdatePlayLabel()
+        public void UpdatePlayLabel()
         {
             string labelText = PlayerUtilities.GenerateLabelText();
             CurrentlyPlaying.Text = labelText;
+        }
+
+        private void AlwaysTop_CheckedChanged(object sender, EventArgs e)
+        {
+           this.TopMost = AlwaysTop.Checked;
         }
     }
 }

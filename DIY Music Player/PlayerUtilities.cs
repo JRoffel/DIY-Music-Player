@@ -10,10 +10,10 @@ namespace DIY_Music_Player
 {
     static class PlayerUtilities
     {
-
         private static WindowsMediaPlayer Player = new WindowsMediaPlayer();
         private static List<string> AllSongs = new List<string>();
         private static int CurrentIndex = -1;
+        private static MediaPlayerWindow window;
         private static System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private static System.Windows.Forms.Timer PlaylistReadTimer = new System.Windows.Forms.Timer();
         [ThreadStatic]
@@ -26,6 +26,7 @@ namespace DIY_Music_Player
         {
             get { return Local ?? (Local = new Random(unchecked(Environment.TickCount * 31 + Thread.CurrentThread.ManagedThreadId))); }
         }
+
         [STAThread]
         static void Main()
         {
@@ -50,9 +51,15 @@ namespace DIY_Music_Player
             GetNextSong();
         }
 
+        public static void CreateWindowReference(MediaPlayerWindow Window)
+        {
+            window = Window;
+        }
+
         public static void PlayCurrentSong()
         {
             timer.Stop();
+            window.UpdatePlayLabel();
             Player.controls.play();
         }
 

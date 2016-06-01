@@ -35,6 +35,7 @@
             this.PreviousButton = new System.Windows.Forms.Button();
             this.RepeatBox = new System.Windows.Forms.CheckBox();
             this.CurrentlyPlaying = new System.Windows.Forms.Label();
+            this.AlwaysTop = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // PauseButton
@@ -113,12 +114,24 @@
             this.CurrentlyPlaying.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.CurrentlyPlaying.Click += new System.EventHandler(this.CurrentlyPlaying_Click);
             // 
+            // AlwaysTop
+            // 
+            this.AlwaysTop.AutoSize = true;
+            this.AlwaysTop.Location = new System.Drawing.Point(619, 38);
+            this.AlwaysTop.Name = "AlwaysTop";
+            this.AlwaysTop.Size = new System.Drawing.Size(104, 17);
+            this.AlwaysTop.TabIndex = 8;
+            this.AlwaysTop.Text = "Always On Top?";
+            this.AlwaysTop.UseVisualStyleBackColor = true;
+            this.AlwaysTop.CheckedChanged += new System.EventHandler(this.AlwaysTop_CheckedChanged);
+            // 
             // MediaPlayerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.AlwaysTop);
             this.Controls.Add(this.CurrentlyPlaying);
             this.Controls.Add(this.RepeatBox);
             this.Controls.Add(this.PreviousButton);
@@ -141,5 +154,6 @@
         private System.Windows.Forms.Button PreviousButton;
         private System.Windows.Forms.CheckBox RepeatBox;
         public System.Windows.Forms.Label CurrentlyPlaying;
+        private System.Windows.Forms.CheckBox AlwaysTop;
     }
 }
